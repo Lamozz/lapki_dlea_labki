@@ -1,0 +1,42 @@
+// Определить частоту повторения каждой буквы
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char text[210]; int s = 0;
+
+    printf("Input: \n");
+    fgets(text, 210, stdin);
+
+    while ((text[s] != '\0') && (text[s] != '\n')) {
+        s++;
+    }
+
+    text[s] = '\0'; s = 0;
+    int Min[26] = { 0 }, Max[26] = { 0 };
+
+    while (text[s] != '\0')
+    {
+        if (text[s] >= 'a' && text[s] <= 'z') {
+            Min[text[s] - 'a']++;
+        }
+
+        else if (text[s] >= 'A' && text[s] <= 'Z') {
+            Max[text[s] - 'A']++;
+        }
+        s++;
+    }
+
+    for (s = 0; s < 26; s++)
+    {
+
+        if (Min[s] != 0)
+            printf("%c - %d.\n", s + 'a', Min[s]);
+        if (Max[s] != 0)
+            printf("%c - %d.\n", s + 'A', Max[s]);
+    }
+
+    return 0;
+}
